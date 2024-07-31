@@ -1,4 +1,6 @@
-# Plantilla para tienda utilizando quatu como Backend, potenciado por Next.js 14 por [Harkaysoft](https://harkaysoft.vercel.app)
+# Quatu template Next.js 14
+
+#### Plantilla de tienda utilizando quatu como Backend, potenciado por Next.js 14 y creado por [Harkaysoft](https://harkaysoft.vercel.app)
 
 ![image](https://github.com/user-attachments/assets/2f640999-79e9-4416-ab94-910dc6ac42d5)
 
@@ -66,6 +68,7 @@ Se puede modificar la página modificando `app/src/(public)/page.tsx`. La págin
 Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
 
 1. Agrega tus querys
+
    Puedes personalizarlo a traves de [API Quatu](https://api.quatu.xyz), a través de la interfaz gráfica de Apollo Client
 
    ![image](https://github.com/user-attachments/assets/2c7b6310-e22d-4956-83ab-ed55aeb36b0c)
@@ -80,14 +83,14 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
    `)
    ```
 
-   En `TuQuery` escoge un nombre a tu elección, esta se utilizará en los próximos pasos.
+   En `TuQuery` escoge un nombre a tu elección, este se utilizará en los próximos pasos.
 
    Quedando algo así: (Query de ejemplo)
    
    ```
-   export const TuQuery = gql(`  // Procura que el nombre de `TuQuery` sea similar al nombre de la query
-    query AllProductsByCompanyOnlyVisible($companyId: Int!) {   // <-- nombre de la query
-      allProductsByCompanyOnlyVisible(companyId: $companyId) { // Te recomendamos que el subnombre de la query solo cambie la primera letra a mininúscula para evitar confuciones.
+   export const TuQuery = gql(`  // Procura que el nombre de `TuQuery` sea similar al nombre de la query  ------
+    query AllProductsByCompanyOnlyVisible($companyId: Int!) {   // <-- nombre de la query                <-----┘
+      allProductsByCompanyOnlyVisible(companyId: $companyId) { // Te recomendamos que el subnombre de la query solo cambie la primera letra a mininúscula para evitar.confuciones.
         name
         SKU
         UPC
@@ -100,14 +103,16 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
     `)
     ```
 
-3. Genera el schema
+2. Genera el schema
+
    Antes de crear querys personalizadas, debes generar el schema, sino typescript arrojará errores de tipos.
+
    ```
    npm run codegen
    ```
-4. Obten la data
+3. Obten la data
 
-   En un `page.tsx` o un componente creas tu estructura de react de la siguiente manera:
+   En un `page.tsx` o un componente, crea tu estructura de react de la siguiente manera:
    
    ```bash
    'use client'
@@ -174,7 +179,7 @@ Finalmente, se recomienda utilizar [NextUI](https://nextui.org/docs/guide/introd
 
 ## Envía a producción a través de Vercel
 
-La manera mas fácil de enviar a producción este template es a través de [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), estos son los creadores de next.js.
+La manera mas fácil de enviar a producción este template es a través de [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 Revisa la documentación de como llevar a producción [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
@@ -195,7 +200,7 @@ Para aprender más sobre el proyecto, hecha un vistaso a los siguientes recursos
 
 #### Contacto
 
-El encargado de realizar modificaciones a este `README.md` es [@jhangmez](https://github.com/jhangmez), contactar con él para más información.
+El encargado de realizar modificaciones a este `README.md` es [@jhangmez](https://github.com/jhangmez), contactar con él para más información o a través de su [página](https://www.jhangmez.xyz).
 
 ---
 
