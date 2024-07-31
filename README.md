@@ -8,11 +8,11 @@ Revisa los features de la nueva versión [🚀Ver nueva versión 1](https://gith
 
 ---
 
-# quaTu
+# [quaTu](https://www.quatu.xyz)
 
-![image](https://github.com/user-attachments/assets/bafdd0bc-6648-4fb0-b4af-26a4d13f7c6e)
+#### Plataforma backend de e-commerce enfocado en MYPES, ofreciendo la creación de infraestructura robusta, flexible y escalable.
 
-Plataforma backend de e-commerce enfocado en MYPES, ofreciendo la creación de infraestructura robusta, flexible y escalable.
+![image](https://github.com/user-attachments/assets/467695a0-b63e-4edc-81c2-ca10405d91b7)
 
 Consigue tu cuenta demo en [Quatu.xyz/registro](https://www.quatu.xyz/registro).
 
@@ -45,15 +45,15 @@ Este es un repositorio donde se ubica el código fuente, este es realizado con [
    ```
 5. Escribir el id de tu tienda en la variable correspondiente
 
-   ![image](https://github.com/user-attachments/assets/8c9766db-65b0-4bd7-a671-2f2a56d6d4ad)
-
    Este ID se consigue en https://quatu.xyz/home
 
+   ![image](https://github.com/user-attachments/assets/8c9766db-65b0-4bd7-a671-2f2a56d6d4ad)
+
     ```bash
-    NEXT_PUBLIC_COMPANYID=  # Este ID se consigue en https://quatu.xyz/home
+    NEXT_PUBLIC_COMPANYID= n # Este ID se consigue en https://quatu.xyz/home
     ```
      
-6. ejecuta el servidor
+6. Ejecuta el servidor
 
     ```bash
     npm run dev
@@ -65,15 +65,15 @@ Se puede modificar la página modificando `app/src/(public)/page.tsx`. La págin
 
 ## Creación de tus propias querys
 
-Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
+Ingresa a la API de quatu en [API Quatu](https://api.quatu.xyz)
 
 1. Agrega tus querys
 
-   Puedes personalizarlo a traves de [API Quatu](https://api.quatu.xyz), a través de la interfaz gráfica de Apollo Client
+   Puedes personalizarlo en la [API Quatu](https://api.quatu.xyz), a través de la interfaz gráfica de Apollo Client
 
    ![image](https://github.com/user-attachments/assets/2c7b6310-e22d-4956-83ab-ed55aeb36b0c)
 
-   Luego en `src/lib/graphql/query`, creas
+   Luego en `src/lib/graphql/query`, crea
 
    ```
    export const TuQuery = gql(`
