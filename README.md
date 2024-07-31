@@ -140,6 +140,25 @@ La manera mas fácil de enviar a producción este template es a través de [Verc
 
 Revisa la documentación de como llevar a producción [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
+## Personalización
+
+Este template es de uso libre para los usuarios y externos que quieran conocer la plataforma backend e-commerce de quaTu.
+
+Este proyecto tiene detrás estilos mediante de [Tailwind](https://tailwindcss.com/docs/installation) y la libreria de  estilos [NextUI](https://nextui.org/docs/guide/introduction)
+
+Además, el proyecto utiliza una paleta de colores generados a través de [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/).
+
+1. Selecciona el color primario
+2. Escoge tus fuentes (No se utilizará en este proyecto)
+3. Exportar theme
+4. Descargar mediante .JSON
+5. Extraer los objetos `light` y `dark`
+6. Se utiliza tailwind para modo oscuro mediante `dark:`
+7. Para establecer colores `text-light-primary dark:text-dark-primary`
+8. Para mas información, revisar [Dark mode](https://tailwindcss.com/docs/dark-mode) y [Customing Colors](https://tailwindcss.com/docs/customizing-colors) de Tailwind
+
+Finalmente, se recomienda utilizar [NextUI](https://nextui.org/docs/guide/introduction), ya que la plantilla esta optimizada para esta.
+
 ## Aprende más
 
 Para aprender maás sobre el proyecto, hecha un vistaso a los siguientes recursos:
