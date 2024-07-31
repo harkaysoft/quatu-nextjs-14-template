@@ -2,7 +2,7 @@
 
 #### Plantilla de tienda utilizando quatu como Backend, potenciado por Next.js 14 y creado por [Harkaysoft](https://harkaysoft.vercel.app)
 
-![image](https://github.com/user-attachments/assets/2f640999-79e9-4416-ab94-910dc6ac42d5)
+![image](https://utfs.io/f/1129fff5-3911-43bf-8ad1-d698d7b19377-yu1e21.png)
 
 Revisa los features de la nueva versión [🚀Ver nueva versión 1](https://github.com/harkaysoft/quatu-nextjs-14-template/releases/tag/v1)
 
