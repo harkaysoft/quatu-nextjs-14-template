@@ -1,30 +1,170 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Plantilla para tienda utilizando quatu como Backend, potenciado por Next.js 14 por [Harkaysoft](https://harkaysoft.vercel.app)
 
-## Getting Started
+![image](https://github.com/user-attachments/assets/2f640999-79e9-4416-ab94-910dc6ac42d5)
 
-First, run the development server:
+Revisa los features de la nueva versión [🚀Ver nueva versión 1](https://github.com/harkaysoft/quatu-nextjs-14-template/releases/tag/v1)
 
-```bash
-npm run dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# quaTu
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![image](https://github.com/user-attachments/assets/bafdd0bc-6648-4fb0-b4af-26a4d13f7c6e)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Plataforma backend de e-commerce enfocado en MYPES, ofreciendo la creación de infraestructura robusta, flexible y escalable.
 
-## Learn More
+Consigue tu cuenta demo en [Quatu.xyz/registro](https://www.quatu.xyz/registro).
 
-To learn more about Next.js, take a look at the following resources:
+<strong>Deja de pagar por comisiones, paga por el peso de tus imágenes.</strong>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Este es un repositorio donde se ubica el código fuente, este es realizado con [Next.js](https://nextjs.org/)
 
-## Deploy on Vercel
+## Para comenzar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clona el repositorio
+  
+   ```
+   git clone https://github.com/harkaysoft/quatu-nextjs-14-template.git
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Instala las dependecias
+
+   ```
+   npm install
+   ```
+   
+4. Configura las variables de entorno (enviroment variables)
+
+   Copia el archivo `.env.example` y genera `.env` en el directorio raíz del proyecto:
+  
+   ```
+   cp .env.example .env
+   ```
+5. Escribir el id de tu tienda en la variable correspondiente
+
+   ![image](https://github.com/user-attachments/assets/8c9766db-65b0-4bd7-a671-2f2a56d6d4ad)
+
+   Este ID se consigue en https://quatu.xyz/home
+
+    ```bash
+    NEXT_PUBLIC_COMPANYID=  # Este ID se consigue en https://quatu.xyz/home
+    ```
+     
+6. ejecuta el servidor
+
+    ```bash
+    npm run dev
+    ```
+
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
+
+Se puede modificar la página modificando `app/src/(public)/page.tsx`. La página se modificará automáticamente tras ediciones.
+
+## Creación de tus propias querys
+
+Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
+
+1. Agrega tus querys
+   Puedes personalizarlo a traves de [API Quatu](https://api.quatu.xyz), a través de la interfaz gráfica de Apollo Client
+
+   ![image](https://github.com/user-attachments/assets/2c7b6310-e22d-4956-83ab-ed55aeb36b0c)
+
+   Luego en `src/lib/graphql/query`, creas
+
+   ```
+   export const UN_NOMBRE = gql(`
+
+   ## COPIAS EL QUERY SEGÚN TUS NECESIDADES
+   
+   `)
+   ```
+   
+   Quedando algo así: (Query de ejemplo)
+   
+   ```
+   export const TU_QUERY = gql(`
+    query AllProductsByCompanyOnlyVisible($companyId: Int!) {
+      allProductsByCompanyOnlyVisible(companyId: $companyId) {
+        name
+        SKU
+        UPC
+        id
+        image {
+          id
+          link
+        }
+      }
+    `)
+    ```
+
+3. Genera el schema
+   Antes de crear querys personalizadas, debes generar el schema, sino typescript arrojará errores de tipos.
+   ```
+   npm run codegen
+   ```
+4. Obten la data
+   ```bash
+   'use client'
+   
+      ...
+
+   import { useQuery } from '@apollo/client'
+   import { TU_QUERY } from '@lib/graphql/query'
+   
+   export default function Productos() {
+   
+   const { loading, error, data, refetch } = useQuery(
+      TU_QUERY,
+      {
+        variables: {
+          companyId: Number(process.env.NEXT_PUBLIC_COMPANYID)
+        }
+      }
+    )
+
+   return (
+     ...
+   )
+   
+   }
+   ```
+
+Para mas información, le recomendamos la documentación de [Apollo Client](https://www.apollographql.com/docs/react/)
+
+##### 🚀Estamos actualizando constantemente esta sección
+
+## Envía a producción a través de Vercel
+
+La manera mas fácil de enviar a producción este template es a través de [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), estos son los creadores de next.js.
+
+Revisa la documentación de como llevar a producción [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+
+## Aprende más
+
+Para aprender maás sobre el proyecto, hecha un vistaso a los siguientes recursos:
+
+- [quaTu](https://www.quatu.xyz)
+- [GraphQL](https://graphql.org/learn/)
+- [Docs quaTu](https://docs.quatu.xyz)
+- [Codegen Graphql](https://the-guild.dev/graphql/codegen/docs/getting-started)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Next.js Documentation](https://nextjs.org/docs) - aprende sobre recursos de Next.js y APIs.
+- [Tailwind](https://tailwindcss.com/docs/installation)
+- [NextUI](https://nextui.org/docs/guide/introduction)
+- [Vercel OG](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
+- [Framer motion](https://www.framer.com/motion/)
+
+---
+
+<div style="display: flex; align-items: center; height: fit-content;">
+  <img src="https://avatars.githubusercontent.com/u/60937214?v=4" width="40" style="margin-right: 10px;"/>
+  <span>Made with ❤️ by Jhan Gómez P.</span>
+</div>
+
+---
+
+<div align="center">
+  <strong>Harkay</strong>
+  <strong> S O F T</strong>
+</div>
