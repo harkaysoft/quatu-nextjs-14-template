@@ -73,19 +73,21 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
    Luego en `src/lib/graphql/query`, creas
 
    ```
-   export const UN_NOMBRE = gql(`
+   export const TuQuery = gql(`
 
    ## COPIAS EL QUERY SEGÚN TUS NECESIDADES
    
    `)
    ```
-   
+
+   En `TuQuery` escoge un nombre a tu elección, esta se utilizará en los próximos pasos.
+
    Quedando algo así: (Query de ejemplo)
    
    ```
-   export const TU_QUERY = gql(`
-    query AllProductsByCompanyOnlyVisible($companyId: Int!) {
-      allProductsByCompanyOnlyVisible(companyId: $companyId) {
+   export const TuQuery = gql(`  // Procura que el nombre de `TuQuery` sea similar al nombre de la query
+    query AllProductsByCompanyOnlyVisible($companyId: Int!) {   // <-- nombre de la query
+      allProductsByCompanyOnlyVisible(companyId: $companyId) { // Te recomendamos que el subnombre de la query solo cambie la primera letra a mininúscula para evitar confuciones.
         name
         SKU
         UPC
@@ -104,18 +106,21 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
    npm run codegen
    ```
 4. Obten la data
+
+   En un `page.tsx` o un componente creas tu estructura de react de la siguiente manera:
+   
    ```bash
    'use client'
    
       ...
 
    import { useQuery } from '@apollo/client'
-   import { TU_QUERY } from '@lib/graphql/query'
+   import { TuQuery } from '@lib/graphql/query'
    
    export default function Productos() {
    
    const { loading, error, data, refetch } = useQuery(
-      TU_QUERY,
+      TuQuery,
       {
         variables: {
           companyId: Number(process.env.NEXT_PUBLIC_COMPANYID)
@@ -124,7 +129,20 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
     )
 
    return (
+
+   // Si es un elemento no iterable
+
+     {data?.tuQuery?.name} // Este elemento estará tipado, por lo que te recomendamos seguir las sugerencias de typescript
+   
      ...
+   
+   // Si es un elemento iterable
+
+     {data?.tuQuery?.price?.map((price, index) => ( // Este elemento estará tipado, por lo que te recomendamos seguir las sugerencias de typescript
+
+       {price?.unitPrice}
+   
+     ))}
    )
    
    }
@@ -133,12 +151,6 @@ Ingresa a la api de quatu en [API Quatu](https://api.quatu.xyz)
 Para mas información, le recomendamos la documentación de [Apollo Client](https://www.apollographql.com/docs/react/)
 
 ##### 🚀Estamos actualizando constantemente esta sección
-
-## Envía a producción a través de Vercel
-
-La manera mas fácil de enviar a producción este template es a través de [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), estos son los creadores de next.js.
-
-Revisa la documentación de como llevar a producción [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
 ## Personalización
 
@@ -159,9 +171,16 @@ Además, el proyecto utiliza una paleta de colores generados a través de [Mater
 
 Finalmente, se recomienda utilizar [NextUI](https://nextui.org/docs/guide/introduction), ya que la plantilla esta optimizada para esta.
 
+
+## Envía a producción a través de Vercel
+
+La manera mas fácil de enviar a producción este template es a través de [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), estos son los creadores de next.js.
+
+Revisa la documentación de como llevar a producción [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+
 ## Aprende más
 
-Para aprender maás sobre el proyecto, hecha un vistaso a los siguientes recursos:
+Para aprender más sobre el proyecto, hecha un vistaso a los siguientes recursos:
 
 - [quaTu](https://www.quatu.xyz)
 - [GraphQL](https://graphql.org/learn/)
@@ -173,6 +192,10 @@ Para aprender maás sobre el proyecto, hecha un vistaso a los siguientes recurso
 - [NextUI](https://nextui.org/docs/guide/introduction)
 - [Vercel OG](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
 - [Framer motion](https://www.framer.com/motion/)
+
+#### Contacto
+
+El encargado de realizar modificaciones a este `README.md` es [@jhangmez](https://github.com/jhangmez), contactar con él para más información.
 
 ---
 
