@@ -45,7 +45,7 @@ export default function Productos({ slug }: { slug: number }) {
             ))}
           </div>
           <div className='space-y-3 flex flex-col md:space-y-0 md:flex-row md:space-x-6'>
-            <b className='text-light-primary dark:text-dark-primary'>PRECIOS</b>
+            <b className='text-light-primary dark:text-dark-primary'>Precios</b>
             {data?.getProductByIdAndCompanyId?.price
               ?.filter((price) => price?.visible && price?.unitPrice >= 0)
               .map((price, index) => (

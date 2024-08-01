@@ -25,37 +25,45 @@ export default function Productos() {
           Error {error.message}
         </p>
       ) : (
-        <section className='container max-w-full flex gap-4 flex-wrap'>
-          {data?.allProductsByCompanyOnlyVisible.map((product) => (
-            <Card key={product.id} as={Link} href={`/producto/${product.id}`}>
-              <CardHeader>{product.name}</CardHeader>
-              <CardBody className='flex items-center'>
-                {product.image && product.image.length > 0 ? (
-                  <Image
-                    // src={product.image[0]?.link}
-                    src={`/api/image?width=400&height=300&name=${encodeURIComponent(
-                      product.name
-                    )}&url=${encodeURIComponent(product.image[0]?.link || '')}`}
-                    fallbackSrc='/loadingImage.webp'
-                    alt='Imagen del producto'
-                  />
-                ) : (
-                  <Image
-                    as={NextImage}
-                    width={150}
-                    height={150}
-                    alt='No existe Imagen'
-                    className='bg-opacity-50'
-                    src='/noImage.webp'
-                  />
-                )}
-                <div className=''>
+        <section className='container max-w-full px-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+            {data?.allProductsByCompanyOnlyVisible.map((product) => (
+              <Card
+                key={product.id}
+                as={Link}
+                href={`/producto/${product.id}`}
+                className='hover:opacity-100 hover:border-light-primary hover:dark:border-dark-primary border-2'
+              >
+                <CardBody className='flex items-center p-0'>
+                  {product.image && product.image.length > 0 ? (
+                    <Image
+                      src={`/api/image?width=400&height=300&name=${encodeURIComponent(
+                        product.name
+                      )}&url=${encodeURIComponent(
+                        product.image[0]?.link || ''
+                      )}`}
+                      fallbackSrc='/loadingImage.webp'
+                      alt='Imagen del producto'
+                      className='w-full h-auto object-cover'
+                    />
+                  ) : (
+                    <Image
+                      as={NextImage}
+                      width={400}
+                      height={300}
+                      alt='No existe Imagen'
+                      className='w-full h-auto object-cover bg-opacity-50'
+                      src='/noImage.webp'
+                    />
+                  )}
+                </CardBody>
+                <CardHeader>{product.name}</CardHeader>
+                <CardFooter className='flex flex-col justify-between items-start'>
                   <b>PRECIOS</b>
                   {product.price
                     ?.filter((price) => price?.visible && price?.unitPrice >= 0)
-
                     .map((price, index) => (
-                      <div key={index}>
+                      <div key={index} className='w-full'>
                         {price?.unitPrice != 0 && (
                           <p>
                             Precio al por menor: ({price?.currency?.name}){' '}
@@ -70,16 +78,15 @@ export default function Productos() {
                             unidades
                           </p>
                         )}
-                        {index <
-                        data.allProductsByCompanyOnlyVisible.length - 1 ? (
-                          <Divider />
-                        ) : null}
+                        {index < (product.price?.length ?? 0) - 1 && (
+                          <Divider className='my-2' />
+                        )}
                       </div>
                     ))}
-                </div>
-              </CardBody>
-            </Card>
-          ))}
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </section>
       )}
     </>
